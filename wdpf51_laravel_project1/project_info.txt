@@ -1,0 +1,5 @@
+<--------------Laravel Project Info----------------->
+
+1.create project:-composer create-project --prefer-dist laravel/laravel:^7.0 wdpf51_laravel_project1
+2.Run project:-php artisan serve
+3.
