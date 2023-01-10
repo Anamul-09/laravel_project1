@@ -1,0 +1,58 @@
+<--------------project Info-------------->
+1.create project:composer create-project laravel/laravel:^8.0
+2.Run Project:php artisan serve
+3.create controller and model with resorchful :php artisan make:model Product -mcr
+4.crate migrate:php artisan migrate
+5.Refresh command:php artisan migrate:refresh
+6.create seeder:php artisan make:seeder ProductSeeder
+7.Go to ProductSeeder and putting this value:
+		use Illuminate\Database\Seeder;
+		use Illuminate\Support\Facades\DB;
+		use Illuminate\Support\Str;
+
+
+  DB::table('users')->insert([
+            'product_name' => Str::random(15),
+            'product_details' => Str::random(30),
+            'product_price' => '200.00/no_photo.jpg',
+            'product_image' =>'assets/images' ,
+            'product_category' => 1,
+            
+        ]);
+
+8.Go to seeders/databaseSeeder ang putting this code:
+ $this->call([
+        ProductSeeder::class,
+        
+    ]);
+9.Insert data :php artisan db:seed
+10.Create Factory:php artisan make:factory ProductFactory --model=Product
+11.Go to productFactory and putting this value:
+return [
+            'product_name' => $this->faker->name(),
+            'product_details' => $this->faker->paragraph(),
+            'product_price' => $this->faker->randomDigit(),
+            'product_image' => $this->faker->imageUrl($width = 200, $height = 200),
+            'product_category' => $this->faker->randomDigit(),
+
+
+
+
+        ];
+
+	#then run command:php artisan db:seed
+
+
+12.show route name:php artisan route:list
+
+
+
+
+
+
+
+
+
+
+
+

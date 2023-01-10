@@ -1,0 +1,9 @@
+		<------git pull and system-------->
+
+1.Composer Install/update
+2..env create and db_connection
+3.php artisan key:generate
+4.php artisan migrate
+5.php artisan db:seed
+6.Laravel version check:php artisan -v
+5.
