@@ -18,8 +18,9 @@ class ProductFactory extends Factory
             'product_name' => $this->faker->name('product'),
             'product_details' => $this->faker->paragraph(),
             'product_price' => $this->faker->randomDigit(),
-            'product_image' => $this->faker->imageUrl($width = 200, $height = 200),
-            'product_category' => $this->faker->randomDigit(),
+            'product_image' => $this->faker->imageUrl($width = 200, $height = 200, 'animals', true),
+            'product_category' => $this->faker->randomDigitNot(0),
+            'product_stock' => $this->faker->randomNumber($nbDigit = 4),
 
 
 

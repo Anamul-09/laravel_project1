@@ -14,6 +14,7 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="assets/assets/css/dashlite.css?ver=3.1.1">
     <link id="skin-default" rel="stylesheet" href="assets/assets/css/theme.css?ver=3.1.1">
+    <link rel="stylesheet" href="assets/assets/css/style.css">
 </head>
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">

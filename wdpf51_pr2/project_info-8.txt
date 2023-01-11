@@ -45,6 +45,9 @@ return [
 
 12.show route name:php artisan route:list
 
+========================11/1/2023======================
+1.limit word:this code putting where i needed=={{Str::limit($product->product_details,30,'...')}}
+
 
 
 

@@ -1,0 +1,9 @@
+.nk-header-fixed + .nk-content {
+    position: relative;
+    padding-top: 0px !important;
+}
+
+.nk-header-fixed + .nk-content {
+    margin-top: 20px;
+    position: relative;
+}
