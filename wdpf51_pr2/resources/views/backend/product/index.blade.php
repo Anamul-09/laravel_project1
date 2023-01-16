@@ -7,6 +7,12 @@
             <div class="nk-content-body">
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
+
+                      
+                            @if($msg = Session::get('msg'))
+                       <div class="alert alert-success">{{ $msg}}</div>
+                        @endif
+                    
                         <div class="nk-block-head-content">
                             <h3 class="nk-block-title page-title">Products</h3>
                         </div><!-- .nk-block-head-content -->
@@ -36,8 +42,8 @@
                                             </div>
                                         </li>
                                         <li class="nk-block-tools-opt">
-                                            <a href="#" data-target="addProduct" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
-                                            <a href="#" data-target="addProduct" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Product</span></a>
+                                            
+                                            <a href="{{ route('products.create') }}"  class=" btn btn-primary "><em class="icon ni ni-plus"></em><span>Add Product</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -142,7 +148,8 @@
                             <div class="card-inner">
                                 <div class="nk-block-between-md g-3">
                                     <div class="g">
-                                        {{ $products->links(); }}
+                                        {{ $products->links('vendor/pagination/bootstrap-4') }}
+                                        {{-- {{Str::limit($products->links('vendor/pagination/bootstrap-4'),3,'...')}} --}}
                                        <!-- .pagination -->
                                     </div>
                                     
@@ -162,7 +169,7 @@
                     </div><!-- .nk-block-head -->
                     <div class="nk-block">
                         <div class="row g-3">
-                            <form class="form" method="post" action="{{url('/products')}}" >
+                            <form class="form" method="post" action="{{url('/products')}}" enctype="multipart/form-data" >
                                 @csrf
                             <div class="col-12">
                                 <div class="form-group">
@@ -216,12 +223,12 @@
                                 </div>
                             </div>
                            
-                            <div class="col-12">
-                                <div class="upload-zone small bg-lighter my-2">
-                                    <input type="file" class="dz-message">
-                                        <span class="dz-message-text">Drag and drop file</span>
+                            {{-- <div class="col-12">
+                                
+                                    <div class="form-control-wrap">
+                                        <input type="file" name="product_image" class="form-control" id="product_image">
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-12">
                                 <button type="button" id="addnew" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add New</span></button>

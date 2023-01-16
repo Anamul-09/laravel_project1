@@ -73,7 +73,7 @@
                                 <a href="{{url('/products')}}" class="nk-menu-link"><span class="nk-menu-text">Product List</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/product-card.html" class="nk-menu-link"><span class="nk-menu-text">Product Card</span></a>
+                                <a href="{{url('/products/create')}}" class="nk-menu-link"><span class="nk-menu-text">Add Product</span></a>
                             </li>
                             <li class="nk-menu-item">
                                 <a href="html/product-details.html" class="nk-menu-link"><span class="nk-menu-text">Product Details</span></a>

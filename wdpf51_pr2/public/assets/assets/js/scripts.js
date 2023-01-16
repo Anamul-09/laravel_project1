@@ -1128,7 +1128,12 @@
 
 $(document).ready(function () {
     $("#addnew").click(function () {
-        alert($(".form").serialize()).val();
+        var values = $(".form").serialize();
+
+        //productController a jabi and data pass korbi and message show korbi
+        $.post("products", values, function (data) {
+            alert(data);
+        });
     });
 });
 
