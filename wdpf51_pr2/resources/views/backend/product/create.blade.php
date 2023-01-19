@@ -72,12 +72,13 @@
                         </div>
                     </div>
                
-                    {{-- <div class="col-12">
+                    <div class="col-12">
                         
                             <div class="form-control-wrap">
+                                <label for="">Product Image:</label><br>
                                 <input type="file" name="product_image" class="form-control" id="product_image">
                             </div>
-                        </div> --}}
+                        </div>
                         <br>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add New</span></button>

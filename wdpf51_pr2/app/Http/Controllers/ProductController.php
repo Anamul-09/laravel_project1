@@ -51,6 +51,7 @@ class ProductController extends Controller
             'product_details' => 'required ',
             'product_category' => 'required ',
             'product_stock' => 'required ',
+            'product_image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
         if ($validation) {
 
@@ -60,6 +61,15 @@ class ProductController extends Controller
             $Product->product_details =  $request->product_details;
             $Product->product_category =  $request->product_category;
             $Product->product_stock =  $request->product_stock;
+
+            if ($request->product_image) {
+                $imageName = time() . '.' . $request->product_image->extension();
+                $request->product_image->move(public_path('product_photos'), $imageName);
+                $Product->product_image = $imageName;
+            } else {
+                $Product->product_image = '';
+            }
+
             $Product->save();
             return redirect('/products')->with('msg', 'Product added successfully');
             // echo "success";
@@ -85,7 +95,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('backend.product.single', compact('product'));
     }
 
     /**
