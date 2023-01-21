@@ -84,7 +84,8 @@
                                 <ul class="link-list-opt no-bdr">
                                   <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Product</span></a>
                                   </li>
-                                  <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Product</span></a>
+                                  <li><a href="#"><em class="icon ni ni-trash "></em><span>Remove
+                                        Product</span></a>
                                   </li>
                                   <li><a href="#"><em class="icon ni ni-bar-c"></em><span>Update Stock</span></a>
                                   </li>
@@ -141,14 +142,22 @@
                                   data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                   <ul class="link-list-opt no-bdr">
-                                    <li><a href=""><em class="icon ni ni-edit"></em><span>Edit Product</span></a>
+                                    <li><a href="{{ route('products.edit', $product->id) }}"><em
+                                          class="icon ni ni-edit"></em><span>Edit Product</span></a>
                                     </li>
                                     <li><a href="{{ route('products.show', $product->id) }}"><em
                                           class="icon ni ni-eye"></em><span>View Product</span></a></li>
                                     <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Product
                                           Orders</span></a></li>
-                                    <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove
-                                          Product</span></a></li>
+                                    <li>
+                                      <form method="POST" action="{{ route('products.destroy', $product->id) }}"
+                                        onsubmit="return confirm('Are you sure?')">
+                                        {{ method_field('DELETE') }}
+                                        @csrf
+                                        <button type="submit"><em class="icon ni ni-trash"></em>Remove
+                                          Product</button>
+                                      </form>
+                                    </li>
                                   </ul>
                                 </div>
                               </div>

@@ -106,7 +106,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $cats = Category::get();
+        return view('backend.product.edit', compact('product', 'cats'));
     }
 
     /**
@@ -118,7 +119,37 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validation = $request->validate([
+            'product_name' => 'required ',
+            'product_price' => 'required',
+            'product_details' => 'required ',
+            'product_category' => 'required ',
+            'product_stock' => 'required ',
+            'product_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+        if ($validation) {
+
+            // $Product = new Product;
+            $product->product_name = $request->product_name;
+            $product->product_price =  $request->product_price;
+            $product->product_details =  $request->product_details;
+            $product->product_category =  $request->product_category;
+            $product->product_stock =  $request->product_stock;
+
+            if ($request->product_image) {
+                $imageName = time() . '.' . $request->product_image->extension();
+                $request->product_image->move(public_path('product_photos'), $imageName);
+                $product->product_image = $imageName;
+            } else {
+                $product->product_image = '';
+            }
+
+            $product->save();
+            return redirect('/products')->with('msg', 'Product added successfully');
+            // echo "success";
+            // echo "success";
+        }
+        // echo "hello";
     }
 
     /**
@@ -129,5 +160,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $product->delete();
+        return redirect('/products')->with('msg', 'Product Deleted successfully');
+        // echo "HEllo";
     }
 }
