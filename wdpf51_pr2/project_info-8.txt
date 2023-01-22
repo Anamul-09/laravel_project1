@@ -48,11 +48,29 @@ return [
 ========================11/1/2023======================
 1.limit word:this code putting where i needed=={{Str::limit($product->product_details,30,'...')}}
 
+========================22/1/2023 MIDDLEWARE======================
 
+1.create middleware:	
+php artisan make:middleware CheckAge
+2.Go to Kernel.php and putting this code: protected $routeMiddleware = ['CheckAge' => \App\Http\Middleware\CheckAge::class,]
+3.Create Controller :php artisan make:controller showAge
+4.got to showage controller and putting this code:
+ public function index(Request $req)
+    {
+        echo "Welcome you are $req->age years old";
+    }
 
+5.go to CheckAge middleware and putting thid code:
+ if ($request->age>=30) {
+            die("You are $request->age years old, sorry we are unable to welcome you right now!");
+        }
+ 
+        return $next($request);
 
-
-
+6.Go to web.php and create route group.....look like :--
+Route::middleware([CheckAge::class])->group(function () {
+    Route::get('checkage', [showAge::class, 'index']);
+});
 
 
 
