@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 //Frontend Routes
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/admin', [LoginController::class, 'login']);
+// Route::get('/admin', [LoginController::class, 'login']);
 
 
 // Backend Routes

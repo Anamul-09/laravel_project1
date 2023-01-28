@@ -37,7 +37,49 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
+
       </ul>
+      {{-- <ul class="pull-right navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link " href="{{ route('dashboard') }}">Admin Login</a>
+        </li>
+      </ul> --}}
+
+
+      {{-- conditional rendaring --}}
+
+      <ul class="pull-right navbar-nav">
+
+        @if (Route::has('login'))
+
+          @auth
+            <li class="nav-item"><a href="{{ url('/dashboard') }}" class="nav-link ">Dashboard</a>
+            </li>
+
+            <li class="nav-item">
+              <form action="{{ route('logout') }}" method="post">
+                @csrf
+
+                <button type="submit" class="btn btn-primary">Logout</button>
+
+              </form>
+            </li>
+          @else
+            <li class="nav-item">
+              <a href="{{ route('login') }}" class="nav-link ">Log in</a>
+            </li>
+            @if (Route::has('register'))
+              <li class="nav-item">
+                <a href="{{ route('register') }}" class="nav-link ">Register</a>
+              </li>
+            @endif
+          @endauth
+
+        @endif
+
+
+      </ul>
+
     </div>
   </nav>
 
