@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\LoginController;
+use App\Http\Controllers\backend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 // Backend Routes
-Route::middleware([
+Route::prefix('admin')->middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -29,4 +30,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::resource('/users', UserController::class);
 });
+
+// Route::group([
+//     'prefix' => '/admin',
+//     'as' => 'admin.',
+//   ], function () {
+//       Route::get('/', [AdminController::class, 'index'])->name('index');
+//   });

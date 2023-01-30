@@ -324,19 +324,19 @@
 
 {{-- Push Scrits --}}
 @push('scripts')
-  <script src="backend_assets/vendor/jquery/jquery.min.js"></script>
-  <script src="backend_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/backend_assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/backend_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plubackend_assets/gin JavaScript-->
-  <script src="backend_assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plu/backend_assets/gin JavaScript-->
+  <script src="/backend_assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom sbackend_assets/cripts for all pages-->
-  <script src="backend_assets/js/sb-admin-2.min.js"></script>
+  <!-- Custom s/backend_assets/cripts for all pages-->
+  <script src="/backend_assets/js/sb-admin-2.min.js"></script>
 
-  <!-- Page levbackend_assets/el plugins -->
-  <script src="backend_assets/vendor/chart.js/Chart.min.js"></script>
+  <!-- Page lev/backend_assets/el plugins -->
+  <script src="/backend_assets/vendor/chart.js/Chart.min.js"></script>
 
-  <!-- Page levbackend_assets/el custom scripts -->
-  <script src="backend_assets/js/demo/chart-area-demo.js"></script>
-  <script src="backend_assets/js/demo/chart-pie-demo.js"></script>
+  <!-- Page lev/backend_assets/el custom scripts -->
+  <script src="/backend_assets/js/demo/chart-area-demo.js"></script>
+  <script src="/backend_assets/js/demo/chart-pie-demo.js"></script>
 @endpush
