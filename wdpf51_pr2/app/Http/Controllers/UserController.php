@@ -21,4 +21,22 @@ class UserController extends Controller
         echo "<br>";
         echo $phone->user->name;
     }
+
+    //add role
+
+    public function roleAssign()
+    {
+        $user = User::find(1);
+        $roleIds = [1, 2];
+        $user->roles()->sync($roleIds);
+        // $user->roles()->attach($roleIds);
+    }
+
+    //remove role
+    // public function roleDetach()
+    // {
+    //     $user = User::find(1);
+    //     $roleIds = [1, 2, 3];
+    //     $user->roles()->detach($roleIds);
+    // }
 }

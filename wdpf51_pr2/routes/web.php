@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\showAge;
@@ -53,3 +54,6 @@ Route::get('/report1', [ReportController::class, 'report1']);
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/user-phone', [UserController::class, 'PhoneModel']);
+Route::get('/post', [PostController::class, 'index']);
+Route::get('/roles', [UserController::class, 'roleAssign']);
+Route::get('/remove-role', [UserController::class, 'roleDetach']);

@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Phone;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -59,5 +61,21 @@ class DatabaseSeeder extends Seeder
         $phone->phone = rand(412412313, 4124123131);
 
         $phone->save();
+
+
+        // post seeder
+        for ($i = 1; $i <= 15; $i++) {
+            $post = new Post();
+            $post->name = Str::random(20);;
+
+            $post->save();
+        }
+        for ($i = 1; $i <= 50; $i++) {
+            $comment = new Comment();
+            $comment->post_id = rand(1, 15);
+            $comment->comment = Str::random(20);;
+
+            $comment->save();
+        }
     }
 }
