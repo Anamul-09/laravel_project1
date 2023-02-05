@@ -1,0 +1,95 @@
+###---------------MultiRole and autrhintication---------------------##
+https://www.itsolutionstuff.com/post/laravel-8-user-roles-and-permissions-tutorialexample.html
+
+		Step-1
+	-----------------------
+
+1.composer create-project --prefer-dist laravel/laravel wdpf51_laravel8_AAP
+2.cd wdpf51_laravel8_AAP
+3.Env configuration with database
+
+		Step-2
+	-----------------------
+
+4.composer require spatie/laravel-permission
+5.composer require laravelcollective/html
+6.go to config/app.php and puttinfg this code in providers:
+Spatie\Permission\PermissionServiceProvider::class,
+7.php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+8.php artisan migrate
+9php artisan make:migration create_products_table
+
+		Step-3
+	-----------------------
+
+10.go to product table and putting this code:
+$table->id();
+            $table->string('name');
+            $table->text('detail');
+            $table->timestamps();
+11.again :-php artisan migrate
+		Step-4
+	-----------------------
+12.create Product model and controller:-php artisan make:model Product -cr
+13.ge to product model and putting this value:-
+protected $fillable = [
+        'name', 'detail'
+    ];
+}
+14.go to karnal middleware and putting this code:-
+'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
+		Step-5
+	-----------------------
+15.go to kernal.php and putting this code:-
+ 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
+		Step 6: Create Authentication
+        ---------------------------------------------
+
+16.composer require laravel/ui
+17.php artisan ui bootstrap --auth
+18.npm install
+19.npm run dev
+
+		Step 6: Create Routes
+        ---------------------------------------------
+20.create usercontroller :-php artisan make:controller UserController 
+-r
+21.go to web.php and putting this code:-
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+});
+22.go to product controller and putting code:-
+23.create RollController:-php artisan make:controller RollController
+
+	-------------------------Step 9: Add Blade Files--------------
+24.
+
+
+-------------------Step 10: Create Seeder For Permissions and AdminUser-----------------------
+
+
+25.php artisan make:seeder PermissionTableSeeder
+26.go to PermissionTableSeeder.php and putting this code:-
+
+27.php artisan db:seed --class=PermissionTableSeeder
+
+
+
+
+
+
+
+
+
+
+
+
+
