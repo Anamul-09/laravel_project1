@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::orderBy('created_at', 'DESC')->take(5)->get();
+        return Product::orderBy('created_at', 'DESC')->get();
     }
 
     /**

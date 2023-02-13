@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\SearchProduct;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
@@ -29,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
-Route::resource('/products', ProductController::class);
+// Route::resource('/products', ProductController::class);
+
+
 
 
 
