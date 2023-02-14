@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::orderBy('created_at', 'DESC')->get();
+        return Product::orderBy('id', 'DESC')->get();
     }
 
     /**
@@ -26,6 +26,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // echo "hello";
         $input = $request->all();
 
         $request->validate([
@@ -37,8 +38,10 @@ class ProductController extends Controller
 
         ]);
 
-        $product = Product::create($input);
-        return Product::create($input);
+
+        // $product = Product::create($input);
+        Product::create($input);
+        return "Inserted Successfully";
     }
 
     /**
@@ -64,7 +67,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $input = $request->all();
         $product->update($input);
-        return Product::findOrFail($id);
+        Product::findOrFail($id);
+        return "Success";
     }
 
     /**
